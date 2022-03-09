@@ -6,6 +6,7 @@
 
     onMount(() => {
         variantForm = document.getElementById("variantForm");
+        formHandler()
     });
 
     let options = sampleInput.options2;
@@ -124,7 +125,10 @@
         };
         if (getParentAvailability().length > 0) {
             let unavailableParents = getParentAvailability();
-            unavailableParents.forEach((parent) => disableInput(parent));
+            unavailableParents.forEach((parent) => {
+                disableInput(parent)
+                
+            });
         }
 
         let disableElements = getDisableElements();
