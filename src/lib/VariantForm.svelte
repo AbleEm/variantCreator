@@ -24,22 +24,26 @@
         };
     });
 
-    let modifiedVariants = [];
+    let inactiveCombinations = [];
+    let activeCombinations = []
     sampleInput.variants2.map((combination) => {
         if (combination.stock === "inactive") {
             let value = combination.attribute_values.map((item) => item.value);
-            modifiedVariants.push(value);
+            inactiveCombinations.push(value);
+        } else {
+            let value = combination.attribute_values.map((item) => item.value);
+            activeCombinations.push(value);
         }
     });
 
-    let invalidCombiSearchFn = (inputArray, searchKey) => {
-        let invalidCombinations = [];
+    let combiSearchFn = (inputArray, searchKey) => {
+        let combinations = [];
         inputArray.map((input) => {
             if (input.find((item) => item === searchKey)) {
-                invalidCombinations.push(input);
+                combinations.push(input);
             }
         });
-        return invalidCombinations;
+        return combinations;
     };
 
     let disableInput = (inputNode) => {
@@ -62,6 +66,27 @@
             element.checked = false;
         }
     };
+
+    let disableParent = (inputNode,availableCombinations) => {
+        let element = document.getElementById(inputNode);
+        let helper
+        // @ts-ignore
+        if(element.checked === true){
+            helper = availableCombinations.map(combi=> combi[combi.length-1])
+        }
+        disableInput(inputNode)
+        if (helper){
+            helper.forEach((item)=> enableInput(item))
+            focusInput(helper[0])  
+        }
+    }
+
+    let enableInput = (inputNode)=>{
+        let element = document.getElementById(inputNode)
+        if (element.hasAttribute("disabled")){
+            element.removeAttribute("disabled")
+        }
+    }
 
     let checkInputDisabled = (inputNode) => {
         return document.getElementById(inputNode).hasAttribute("disabled");
@@ -93,10 +118,8 @@
         });
 
         let modifiedInputs = selectedInputs.map((input) => input.value);
-        let unavailableCombinations = invalidCombiSearchFn(
-            modifiedVariants,
-            modifiedInputs[0]
-        );
+        let unavailableCombinations = combiSearchFn(inactiveCombinations,modifiedInputs[0]);
+        let availableCombinations = combiSearchFn(activeCombinations,modifiedInputs[0]);
 
         let getDisableElements = () => {
             let elementList = [];
@@ -123,19 +146,19 @@
             });
             return Array.from(new Set(availability));
         };
-        if (getParentAvailability().length > 0) {
-            let unavailableParents = getParentAvailability();
-            unavailableParents.forEach((parent) => {
-                disableInput(parent)
-                
-            });
-        }
 
+        let unavailableParents = getParentAvailability();
         let disableElements = getDisableElements();
 
         if (disableElements.length > 0) {
             disableElements.forEach((input) => {
                 disableInput(input[input.length - 1]);
+            });
+        }
+
+        if (unavailableParents.length > 0) {
+            unavailableParents.forEach((parent) => {
+                disableParent(parent,availableCombinations)                
             });
         }
     };
