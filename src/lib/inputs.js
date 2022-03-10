@@ -17,11 +17,11 @@ export const options2 = {
     "attributes": [
       {
         "kind": "color",
-        "properties": ["red", "white", "black"]
+        "properties": ["red", "white", "green"]
       },
       {
         "kind": "length",
-        "properties": ["1m", "3m", "6m"]
+        "properties": ["1m", "2m", "3m"]
       },
       {
         "kind": "finish",
@@ -117,10 +117,28 @@ export const variants2 = [
     },
     {
       name: 'color: red | length: 1m | finish: rubber',
-      stock: 'inactive',
+      stock: 'active',
       attribute_values: [
         { kind: 'color', value: 'red' },
         { kind: 'length', value: '1m' },
+        { kind: 'finish', value: 'rubber' }
+      ]
+    },
+    {
+      name: 'color: red | length: 2m | finish: nylon',
+      stock: 'active',
+      attribute_values: [
+        { kind: 'color', value: 'red' },
+        { kind: 'length', value: '2m' },
+        { kind: 'finish', value: 'nylon' }
+      ]
+    },
+    {
+      name: 'color: red | length: 2m | finish: rubber',
+      stock: 'inactive',
+      attribute_values: [
+        { kind: 'color', value: 'red' },
+        { kind: 'length', value: '2m' },
         { kind: 'finish', value: 'rubber' }
       ]
     },
@@ -135,28 +153,10 @@ export const variants2 = [
     },
     {
       name: 'color: red | length: 3m | finish: rubber',
-      stock: 'active',
+      stock: 'inactive',
       attribute_values: [
         { kind: 'color', value: 'red' },
         { kind: 'length', value: '3m' },
-        { kind: 'finish', value: 'rubber' }
-      ]
-    },
-    {
-      name: 'color: red | length: 6m | finish: nylon',
-      stock: 'active',
-      attribute_values: [
-        { kind: 'color', value: 'red' },
-        { kind: 'length', value: '6m' },
-        { kind: 'finish', value: 'nylon' }
-      ]
-    },
-    {
-      name: 'color: red | length: 6m | finish: rubber',
-      stock: 'active',
-      attribute_values: [
-        { kind: 'color', value: 'red' },
-        { kind: 'length', value: '6m' },
         { kind: 'finish', value: 'rubber' }
       ]
     },
@@ -179,8 +179,26 @@ export const variants2 = [
       ]
     },
     {
-      name: 'color: white | length: 3m | finish: nylon',
+      name: 'color: white | length: 2m | finish: nylon',
       stock: 'inactive',
+      attribute_values: [
+        { kind: 'color', value: 'white' },
+        { kind: 'length', value: '2m' },
+        { kind: 'finish', value: 'nylon' }
+      ]
+    },
+    {
+      name: 'color: white | length: 2m | finish: rubber',
+      stock: 'inactive',
+      attribute_values: [
+        { kind: 'color', value: 'white' },
+        { kind: 'length', value: '2m' },
+        { kind: 'finish', value: 'rubber' }
+      ]
+    },
+    {
+      name: 'color: white | length: 3m | finish: nylon',
+      stock: 'active',
       attribute_values: [
         { kind: 'color', value: 'white' },
         { kind: 'length', value: '3m' },
@@ -197,74 +215,56 @@ export const variants2 = [
       ]
     },
     {
-      name: 'color: white | length: 6m | finish: nylon',
-      stock: 'inactive',
-      attribute_values: [
-        { kind: 'color', value: 'white' },
-        { kind: 'length', value: '6m' },
-        { kind: 'finish', value: 'nylon' }
-      ]
-    },
-    {
-      name: 'color: white | length: 6m | finish: rubber',
-      stock: 'inactive',
-      attribute_values: [
-        { kind: 'color', value: 'white' },
-        { kind: 'length', value: '6m' },
-        { kind: 'finish', value: 'rubber' }
-      ]
-    },
-    {
-      name: 'color: black | length: 1m | finish: nylon',
+      name: 'color: green | length: 1m | finish: nylon',
       stock: 'active',
       attribute_values: [
-        { kind: 'color', value: 'black' },
+        { kind: 'color', value: 'green' },
         { kind: 'length', value: '1m' },
         { kind: 'finish', value: 'nylon' }
       ]
     },
     {
-      name: 'color: black | length: 1m | finish: rubber',
+      name: 'color: green | length: 1m | finish: rubber',
       stock: 'inactive',
       attribute_values: [
-        { kind: 'color', value: 'black' },
+        { kind: 'color', value: 'green' },
         { kind: 'length', value: '1m' },
         { kind: 'finish', value: 'rubber' }
       ]
     },
     {
-      name: 'color: black | length: 3m | finish: nylon',
+      name: 'color: green | length: 2m | finish: nylon',
       stock: 'inactive',
       attribute_values: [
-        { kind: 'color', value: 'black' },
-        { kind: 'length', value: '3m' },
+        { kind: 'color', value: 'green' },
+        { kind: 'length', value: '2m' },
         { kind: 'finish', value: 'nylon' }
       ]
     },
     {
-      name: 'color: black | length: 3m | finish: rubber',
-      stock: 'active',
+      name: 'color: green | length: 2m | finish: rubber',
+      stock: 'inactive',
       attribute_values: [
-        { kind: 'color', value: 'black' },
-        { kind: 'length', value: '3m' },
+        { kind: 'color', value: 'green' },
+        { kind: 'length', value: '2m' },
         { kind: 'finish', value: 'rubber' }
       ]
     },
     {
-      name: 'color: black | length: 6m | finish: nylon',
-      stock: 'active',
+      name: 'color: green | length: 3m | finish: nylon',
+      stock: 'inactive',
       attribute_values: [
-        { kind: 'color', value: 'black' },
-        { kind: 'length', value: '6m' },
+        { kind: 'color', value: 'green' },
+        { kind: 'length', value: '3m' },
         { kind: 'finish', value: 'nylon' }
       ]
     },
     {
-      name: 'color: black | length: 6m | finish: rubber',
+      name: 'color: green | length: 3m | finish: rubber',
       stock: 'active',
       attribute_values: [
-        { kind: 'color', value: 'black' },
-        { kind: 'length', value: '6m' },
+        { kind: 'color', value: 'green' },
+        { kind: 'length', value: '3m' },
         { kind: 'finish', value: 'rubber' }
       ]
     },
